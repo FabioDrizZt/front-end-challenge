@@ -1,11 +1,18 @@
 import './App.css'
+import BookingForm from './components/BookingForm'
 
 function App() {
+  // Handle booking submission
+  const handleBookingSubmit = (bookingData) => {
+    // Implement logic to save the booking data to localStorage or handle as needed
+    console.log('Booking Submitted:', bookingData)
+  }
 
   return (
-    <>
-      <h1>Frontend Mentor 👩🏻‍💻 👨🏾‍💻 👨🏻‍💻 👩🏽‍💻 Code Challenge</h1>
-    </>
+    <div>
+      <h1>Bus Ticket Booking</h1>
+      <BookingForm onBookingSubmit={handleBookingSubmit} />
+    </div>
   )
 }
 
