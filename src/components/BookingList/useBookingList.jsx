@@ -18,7 +18,6 @@ export default function useBookingList() {
         }
 
         const data = await response.json()
-        console.log(data);
         
         // Update local storage with fetched data
         localStorage.setItem('bookingData', JSON.stringify(data))

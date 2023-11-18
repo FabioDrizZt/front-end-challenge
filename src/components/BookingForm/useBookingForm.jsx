@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 import { useReducer, useEffect, useState } from 'react';
 import formReducer, { ACTIONS } from './formReducer';
 
@@ -63,6 +65,14 @@ const useBookingForm = () => {
 
       localStorage.setItem('bookingData', JSON.stringify(updatedTickets));
       dispatch({ type: ACTIONS.RESET_FORM, initialState });
+
+      // Show SweetAlert2 success message
+      Swal.fire({
+        title: 'Success!',
+        text: 'Your booking has been submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
