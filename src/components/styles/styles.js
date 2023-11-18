@@ -79,6 +79,7 @@ const styles = {
     borderBottom: '1px solid #ccc',
     padding: '15px',
     marginBottom: '15px',
+    cursor: 'pointer'
   },
   label: {
     fontWeight: 'bold',
