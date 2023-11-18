@@ -1,29 +1,11 @@
-import React, { useReducer } from 'react';
-import formReducer, { ACTIONS } from './formReducer';
-import FormField from './FormField';
-import SubmitButton from './SubmitButton';
+import useBookingForm from './useBookingForm'
+import FormField from './FormField'
+import SubmitButton from './SubmitButton'
+import styles from './styles'
 
-const BookingForm = ({ onBookingSubmit }) => {
-  const initialState = {
-    origin: '',
-    destination: '',
-    passengers: 1,
-    date: '',
-    time: '',
-  };
-
-  const [state, dispatch] = useReducer(formReducer, initialState);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    dispatch({ type: ACTIONS.SET_FIELD, field: name, value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onBookingSubmit(state);
-    dispatch({ type: ACTIONS.RESET_FORM, initialState });
-  };
+const BookingForm = () => {
+  const { state, formErrors, handleInputChange, handleSubmit } =
+    useBookingForm()
 
   return (
     <form onSubmit={handleSubmit} style={styles.form}>
@@ -34,6 +16,7 @@ const BookingForm = ({ onBookingSubmit }) => {
         value={state.origin}
         onChange={handleInputChange}
         required
+        error={formErrors.find((error) => error.field === 'origin')?.message}
       />
 
       <FormField
@@ -43,6 +26,9 @@ const BookingForm = ({ onBookingSubmit }) => {
         value={state.destination}
         onChange={handleInputChange}
         required
+        error={
+          formErrors.find((error) => error.field === 'destination')?.message
+        }
       />
 
       <FormField
@@ -62,6 +48,7 @@ const BookingForm = ({ onBookingSubmit }) => {
         value={state.date}
         onChange={handleInputChange}
         required
+        error={formErrors.find((error) => error.field === 'date')?.message}
       />
 
       <FormField
@@ -75,18 +62,7 @@ const BookingForm = ({ onBookingSubmit }) => {
 
       <SubmitButton />
     </form>
-  );
-};
+  )
+}
 
-const styles = {
-  form: {
-    maxWidth: '400px',
-    margin: 'auto',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  },
-};
-
-export default BookingForm;
+export default BookingForm

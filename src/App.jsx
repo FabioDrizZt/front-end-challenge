@@ -1,5 +1,5 @@
 import './App.css'
-import BookingForm from './components/BookingForm'
+import BookingForm from './components/BookingForm/BookingForm'
 
 function App() {
   // Handle booking submission
