@@ -51,12 +51,19 @@ const useBookingForm = () => {
     return errors.length === 0; // Return true if there are no errors
   };
 
-  const handleSubmit = () => {
-    const existingTickets = JSON.parse(localStorage.getItem('bookingData')) || [];
-    const updatedTickets = [...existingTickets, state];
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Validate the form
+    const isValid = validateForm();
 
-    localStorage.setItem('bookingData', JSON.stringify(updatedTickets));
-    dispatch({ type: ACTIONS.RESET_FORM, initialState });
+    // If the form is valid, proceed with submission
+    if (isValid) {
+      const existingTickets = JSON.parse(localStorage.getItem('bookingData')) || [];
+      const updatedTickets = [...existingTickets, state];
+
+      localStorage.setItem('bookingData', JSON.stringify(updatedTickets));
+      dispatch({ type: ACTIONS.RESET_FORM, initialState });
+    }
   };
 
   return {
