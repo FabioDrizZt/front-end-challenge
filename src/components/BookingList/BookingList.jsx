@@ -1,20 +1,8 @@
-import { useState, useEffect } from 'react'
+import useBookingList from './useBookingList'
 import styles from '../styles/styles'
 
 export default function BookingList() {
-  const [bookings, setBookings] = useState([])
-
-  const fetchBookings = () => {
-    setTimeout(() => {
-      const storedBookings =
-        JSON.parse(localStorage.getItem('bookingData')) || []
-      setBookings(storedBookings)
-    }, 1000)
-  }
-
-  useEffect(() => {
-    fetchBookings()
-  }, [])
+  const { bookings } = useBookingList()
 
   return (
     <div style={styles.container}>
