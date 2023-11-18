@@ -1,4 +1,4 @@
-import styles from './styles'
+import styles from '../styles/styles'
 
 const FormField = ({ label, type, name, value, onChange, required, error }) => (
   <div>
