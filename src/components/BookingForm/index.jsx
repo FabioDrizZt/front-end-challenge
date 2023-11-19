@@ -1,7 +1,7 @@
 import useBookingForm from './useBookingForm'
 import FormField from './FormField'
 import SubmitButton from './SubmitButton'
-import styles from '../styles/styles'
+import styles from '../styles'
 
 const BookingForm = () => {
   const { state, formErrors, handleInputChange, handleSubmit } =

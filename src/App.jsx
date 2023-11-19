@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import BookingForm from './components/BookingForm'
+import Navigation from './components/Navigation'
 import BookingList from './components/BookingList'
-import Navigation from './components/Navitaion'
+
 import './App.css'
 
 function App() {
