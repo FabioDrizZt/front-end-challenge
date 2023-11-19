@@ -1,12 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
 import BookingForm from './components/BookingForm'
 import Navigation from './components/Navigation'
 import BookingList from './components/BookingList'
 
-import './App.css'
-
-function App() {
+export default function App() {
   return (
     <Router>
       <header>
@@ -22,5 +19,3 @@ function App() {
     </Router>
   )
 }
-
-export default App

@@ -1,9 +1,12 @@
 import useBookingList from './useBookingList'
 import BookingDetails from '../BookingDetails'
+import Modal from './Modal'
+import useModal from './useModal'
 import styles from '../styles'
 
 export default function BookingList() {
   const { bookings, handleItemClick, selectedBooking } = useBookingList()
+  const { isModalOpen, openModal, closeModal } = useModal()
 
   return (
     <div style={styles.container}>
@@ -19,23 +22,14 @@ export default function BookingList() {
                 key={index}
                 title="See Details"
                 style={styles.listItem}
-                onClick={() => handleItemClick(index)}
+                onClick={() => {
+                  handleItemClick(index)
+                  openModal()
+                }}
               >
                 <div style={styles.info}>
                   <span style={styles.label}>ID:</span> {booking.id}
                 </div>
-                {/* Some details are hidden to show them in BookingDetails
-                <div style={styles.info}>
-                  <span style={styles.label}>Origin:</span> {booking.origin}
-                </div>
-                <div style={styles.info}>
-                  <span style={styles.label}>Destination:</span>{' '}
-                  {booking.destination}
-                </div>
-                <div style={styles.info}>
-                  <span style={styles.label}>Passengers:</span>{' '}
-                  {booking.passengers}
-                </div> */}
                 <div style={styles.info}>
                   <span style={styles.label}>Date:</span> {booking.date}
                 </div>
@@ -45,7 +39,11 @@ export default function BookingList() {
               </li>
             ))}
           </ul>
-          <BookingDetails booking={selectedBooking} />
+          {isModalOpen && (
+            <Modal onClose={closeModal}>
+              <BookingDetails booking={selectedBooking} />
+            </Modal>
+          )}
         </div>
       )}
     </div>

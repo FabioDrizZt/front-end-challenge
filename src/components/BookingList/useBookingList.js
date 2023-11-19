@@ -13,12 +13,10 @@ export default function useBookingList() {
     if (storedBookings.length === 0) {
       try {
         const response = await fetch(url)
-        if (!response.ok) {
-          throw new Error('Failed to fetch data')
-        }
+        if (!response.ok) throw new Error('Failed to fetch data')
 
         const data = await response.json()
-        
+
         // Update local storage with fetched data
         localStorage.setItem('bookingData', JSON.stringify(data))
 

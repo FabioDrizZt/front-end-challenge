@@ -90,6 +90,40 @@ const styles = {
     display: 'inline-block',
     marginBottom: '8px',
   },
+  // Modal Styles
+  modal: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
+
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    maxWidth: '600px',
+    width: '100%',
+    boxSizing: 'border-box',
+    position: 'relative',
+  },
+
+  closeButton: {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '14px',
+    color: '#333',
+  },
 }
 
 export default styles
