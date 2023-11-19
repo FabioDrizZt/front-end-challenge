@@ -1,5 +1,5 @@
 import useBookingList from './useBookingList'
-import BookingDetails from '../BookingDetails/BookingDetails'
+import BookingDetails from '../BookingDetails'
 import styles from '../styles/styles'
 
 export default function BookingList() {
@@ -21,7 +21,7 @@ export default function BookingList() {
                 style={styles.listItem}
                 onClick={() => handleItemClick(index)}
               >
-                {/* Some details hidden
+                {/* Some details are hidden to show them in BookingDetails
                 <div style={styles.info}>
                   <span style={styles.label}>Origin:</span> {booking.origin}
                 </div>
